@@ -41,7 +41,6 @@ export class BrandsService {
     if(!( brand instanceof Brand) ) {
       throw new NotFoundException(`Brand with term ${term} not found`);
     }
-
     return brand;
   }
 
@@ -54,9 +53,9 @@ export class BrandsService {
   }
 
   async  remove(id: string) {
-    //const brand = await this.findOne(id);
+    const brand = await this.findOne(id);
 
-    //await this.brandRepository.remove(brand);
+    await this.brandRepository.remove(brand);
 
   }
 }
