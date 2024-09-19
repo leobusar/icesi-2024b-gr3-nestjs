@@ -8,10 +8,12 @@ import {
   Delete,
   ParseUUIDPipe,
   InternalServerErrorException,
+  Query,
 } from '@nestjs/common';
 import { BrandsService } from './brands.service';
 import { CreateBrandDto } from './dto/create-brand.dto';
 import { UpdateBrandDto } from './dto/update-brand.dto';
+import { PaginationDto } from 'src/common/dtos/pagination.dto';
 
 @Controller('brands')
 export class BrandsController {
@@ -30,8 +32,8 @@ export class BrandsController {
   }
 
   @Get()
-  findAll() {
-    return this.brandsService.findAll();
+  findAll(@Query() paginationDto: PaginationDto) {
+    return this.brandsService.findAll(paginationDto);
   }
 
   @Get(':term')

@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Brand } from './entities/brand.entity';
 import { Repository } from 'typeorm';
 import { isUUID } from 'class-validator';
+import { PaginationDto } from 'src/common/dtos/pagination.dto';
 
 @Injectable()
 export class BrandsService {
@@ -21,8 +22,13 @@ export class BrandsService {
     }
   }
 
-  findAll() {
-    return this.brandRepository.find();
+  findAll(paginationDto: PaginationDto) {
+    const { limit=10, offset=0 } = paginationDto;
+
+    return this.brandRepository.find({
+      take: limit,
+      skip: offset
+    });
   }
 
   async findOne(term: string) {

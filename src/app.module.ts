@@ -5,6 +5,8 @@ import { CarsModule } from './cars/cars.module';
 import { BrandsModule } from './brands/brands.module';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { CommonModule } from './common/common.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { ConfigModule } from '@nestjs/config';
     }),
 
     CarsModule, 
-    BrandsModule
+    BrandsModule, CommonModule, AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
