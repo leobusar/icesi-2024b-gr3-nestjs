@@ -23,7 +23,7 @@ export class CarsController {
 
   @Post()
   //@UsePipes(ValidationPipe)
-  create(@Body() car: CreateCarDto): Car {
+  create(@Body() car: CreateCarDto) {
     return this.carsService.create(car);
   }
 

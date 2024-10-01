@@ -13,4 +13,10 @@ export class User {
 
     @Column('text')
     name: string;
+
+    @Column('text',{array:true, default: ['user']})
+    roles: string[];
+
+    @Column('boolean', {default: false})
+    isActive: boolean;
 }
